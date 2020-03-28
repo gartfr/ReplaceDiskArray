@@ -59,9 +59,9 @@ You may take some time to inspect the drive and decide whether is goes to trash 
 
 `smartctl -s apm=254`
 
-`smartctl -C -t long /dev/sdX` or `smartctl -t select,0-max /dev/sdX`
+`smartctl -C -t long /dev/sdX` or `smartctl -C -t select,0-max /dev/sdX`
 
-`smartctl -C -l selftest /dev/sdX`
+`smartctl -l selftest /dev/sdX`
 
 
 If okay at this point continue with wiping disk.
