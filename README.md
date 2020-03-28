@@ -65,22 +65,7 @@ You may take some time to inspect the drive and decide whether is goes to trash 
 
 
 If okay at this point continue with wiping disk.
-Get Physical sector size
-```
-fdisk -l /dev/sdX
-Disk /dev/sdX: 1.8 TiB, 2000398934016 bytes, 3907029168 sectors
-Disk model: ST3500413AS
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 4096 bytes
-...
-Device     Boot      Start        End         Sectors     Size  Id Type
-/dev/sdX1            2048         3839711231  3839709184  1,8T  83 Linux
-/dev/sdX2            3839711232   3907029167  67317936    32,1G  5 Extended
-```
 
-Next, wipe the disk
 ```
-dd if=/dev/zero of=/dev/sdX bs=4096[physical sector size] status=progress
-or
-dd if=/dev/urandom of=/dev/sda2 bs=4096[physical sector size] status=progress
+dd if=/dev/zero of=/dev/sdX bs=1M status=progress
 ```
