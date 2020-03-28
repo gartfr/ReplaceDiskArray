@@ -29,7 +29,8 @@ md1 : active raid1 sda2[0] sdb2[1]
 - Clone the disk partition from a member of the array
 ```
 sgdisk /dev/sdX -R /dev/sdY 
-! Be careful /dev/sdX is the source
+! BE CAREFUL
+! /dev/sdX is the source
 ! /dev/sdY is the new disk
 ! DO NOT MIX UP
 ```
@@ -49,11 +50,15 @@ cat /proc/mdstat
 After the disk was marked as failed and safely replaced, data are safe.
 You may take some time to inspect the drive and decide whether is goes to trash or not.
 
-! Be Carefull
-
+```
+! BE CAREFUL
 ! After this procedure, all data are lost
+```
 
-`smartctl -t long /dev/sdX`
+`smartctl -g all`
+`smartctl -s apm=254`
+`smartctl -C -t long /dev/sdX` or `smartctl -t select,0-max /dev/sdX`
+`smartctl -C -l selftest /dev/sdX`
 
 If okay at this point continue with wiping disk.
 Get Physical sector size
