@@ -1,7 +1,7 @@
 # Failed disk in md Array
 
 ## Procedure to replace the disk
-- First, write all cache to disk, not mandaroty
+- First, write all cache to disk, not mandatory
 
 `sync`
 
