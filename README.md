@@ -69,3 +69,14 @@ If okay at this point continue with wiping disk.
 ```
 dd if=/dev/zero of=/dev/sdX bs=1M status=progress
 ```
+
+
+
+futur:
+
+If you know the array UUID, then mdadm --assemble /dev/md0 --uuid <uuid> (note the slight difference in parameter order) will do what you want: scan all unused volumes for ones that have md metadata for the given UUID. Other options:
+
+mdadm --assemble /dev/md0 --name <name> (does the same thing as --uuid, but with an array name instead of a UUID.)
+mdadm --assemble /dev/md0 --super-minor <minor id #> (does the same thing as --uuid, but with minor device numbers in the metadata. Only recommended for version 0.90 metadata.)
+mdadm --assemble /dev/md0 /dev/disk/by-id/<disk>... (if udev has set up /dev/disk/by-id aliases, which should be static across hardware changes.)
+mdadm --assemble --scan with no arrays listed in the configuration file (scan all unused volumes for md metadata, and assemble RAID arrays based on what's found. Note that if you've got multiple arrays and only want to set up one of them, or if your array has gotten split, this won't do what you want.)
