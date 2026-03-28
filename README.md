@@ -150,9 +150,9 @@ The you'll have to use the `zpool replace` command.
 ```
 zpool replace vm-pool 9017512507357970393 /dev/disk/by-id/ata-P3-512_9F51126332721
 ```
-first arg is the zfs pool name
-second arg is the DISK_ID of the impacted disk in the pool
-third is the new disk path
+- First arg is the zfs pool name  
+- Second arg is the `DISK_ID` of the impacted disk in the pool
+- Third is the new disk path
 
 After that the new disk will be use in the pool the replace the previous one and ZFS will go to resilvering process
 
